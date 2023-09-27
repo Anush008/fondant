@@ -357,6 +357,8 @@ class Executor(t.Generic[Component]):
                 logger.info("Skipping component execution")
             else:
                 output_manifest = self._run_execution(component_cls, input_manifest)
+                # Update run id to match that of the current pipeline run
+                output_manifest.update_metadata("run_id", self.metadata.run_id)
 
         else:
             logger.info("Caching disabled for the component")
