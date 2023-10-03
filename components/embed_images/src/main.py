@@ -102,4 +102,5 @@ class EmbedImagesComponent(PandasTransformComponent):
                 ).T
                 results.append(embeddings)
 
+        torch.cuda.empty_cache()
         return pd.concat(results).to_frame(name=("embeddings", "data"))

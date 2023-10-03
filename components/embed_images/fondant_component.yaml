@@ -1,6 +1,6 @@
 name: Embed images
 description: Component that embeds images using CLIP
-image: ghcr.io/ml6team/embed_images:0730ce4b8fc690cc94ad41191f9bf80ca02925f4
+image: ghcr.io/ml6team/embed_images:fcfe058f25309a08254ca23eb7decdf20757333b
 
 consumes:
   images:
