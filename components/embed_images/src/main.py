@@ -9,17 +9,17 @@ import pandas as pd
 import torch
 from fondant.component import PandasTransformComponent
 from PIL import Image
-from transformers import CLIPProcessor, CLIPVisionModelWithProjection
-
-os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
+from transformers import BatchEncoding, CLIPProcessor, CLIPVisionModelWithProjection
 
 logger = logging.getLogger(__name__)
 
+os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 
 def process_image_batch(
     images: np.ndarray,
     *,
     processor: CLIPProcessor,
+    device:torch.cuda.device,
 ) -> t.List[torch.Tensor]:
     """
     Process the image to a tensor.
@@ -27,6 +27,7 @@ def process_image_batch(
     Args:
         images: The input images as a numpy array containing byte strings.
         processor: The processor object for transforming the image.
+        device: The device to move the transformed image to.
     """
 
     def load(img: bytes) -> Image:
@@ -34,15 +35,14 @@ def process_image_batch(
         bytes_ = io.BytesIO(img)
         return Image.open(bytes_).convert("RGB")
 
-    def transform(img: Image) -> torch.Tensor:
+    def transform(img: Image) -> BatchEncoding:
         """Transform the image to a tensor using a clip processor and move it to the specified
         device.
         """
         # Edge case: https://github.com/huggingface/transformers/issues/21638
         if img.width == 1 or img.height == 1:
             img = img.resize((224, 224))
-
-        return processor(images=img, return_tensors="pt")
+        return processor(images=img, return_tensors="pt").to(device)
 
     return [transform(load(image))["pixel_values"] for image in images]
 
@@ -75,10 +75,11 @@ class EmbedImagesComponent(PandasTransformComponent):
             model_id: id of the model on the Hugging Face hub
             batch_size: batch size to use.
         """
-        torch.cuda.set_device(0)
         logger.info("Initialize model '%s'", model_id)
+        self.device = torch.device(0) if torch.cuda.is_available() else "cpu"
         self.processor = CLIPProcessor.from_pretrained(model_id)
-        self.model = CLIPVisionModelWithProjection.from_pretrained(model_id)
+        self.model = CLIPVisionModelWithProjection.from_pretrained(model_id).\
+            cuda(device=self.device)
         logger.info("Model initialized")
 
         self.batch_size = batch_size
@@ -92,6 +93,7 @@ class EmbedImagesComponent(PandasTransformComponent):
                 image_tensors = process_image_batch(
                     batch,
                     processor=self.processor,
+                    device=self.device,
                 )
                 embeddings = embed_image_batch(
                     image_tensors,
