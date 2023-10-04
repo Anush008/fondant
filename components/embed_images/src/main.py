@@ -19,7 +19,7 @@ def process_image_batch(
     images: np.ndarray,
     *,
     processor: CLIPProcessor,
-    device:torch.cuda.device,
+    device: str,
 ) -> t.List[torch.Tensor]:
     """
     Process the image to a tensor.
@@ -42,6 +42,7 @@ def process_image_batch(
         # Edge case: https://github.com/huggingface/transformers/issues/21638
         if img.width == 1 or img.height == 1:
             img = img.resize((224, 224))
+
         return processor(images=img, return_tensors="pt").to(device)
 
     return [transform(load(image))["pixel_values"] for image in images]
@@ -75,11 +76,12 @@ class EmbedImagesComponent(PandasTransformComponent):
             model_id: id of the model on the Hugging Face hub
             batch_size: batch size to use.
         """
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        logger.info("device used is %s", self.device)
+
         logger.info("Initialize model '%s'", model_id)
-        self.device = torch.device(0) if torch.cuda.is_available() else "cpu"
         self.processor = CLIPProcessor.from_pretrained(model_id)
-        self.model = CLIPVisionModelWithProjection.from_pretrained(model_id).\
-            cuda(device=self.device)
+        self.model = CLIPVisionModelWithProjection.from_pretrained(model_id).to(self.device)
         logger.info("Model initialized")
 
         self.batch_size = batch_size
