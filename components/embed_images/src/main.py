@@ -76,6 +76,7 @@ class EmbedImagesComponent(PandasTransformComponent):
             model_id: id of the model on the Hugging Face hub
             batch_size: batch size to use.
         """
+        torch.cuda.set_device(0)
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         logger.info("device used is %s", self.device)
 

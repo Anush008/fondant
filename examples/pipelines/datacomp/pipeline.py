@@ -72,7 +72,7 @@ embed_images_op = ComponentOp.from_registry(
         "batch_size": 16,
     },
     node_pool_label="node_pool",
-    node_pool_name="model-inference-pool",
+    node_pool_name="model-inference-mega-pool",
     number_of_gpus=1,
 )
 add_clip_score_op = ComponentOp(
