@@ -14,12 +14,14 @@ from transformers import BatchEncoding, CLIPProcessor, CLIPVisionModelWithProjec
 logger = logging.getLogger(__name__)
 
 os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
+os.environ['TORCH_CUDNN_V8_API_DISABLED'] = "1"
+
 
 def process_image_batch(
-    images: np.ndarray,
-    *,
-    processor: CLIPProcessor,
-    device: str,
+        images: np.ndarray,
+        *,
+        processor: CLIPProcessor,
+        device: str,
 ) -> t.List[torch.Tensor]:
     """
     Process the image to a tensor.
@@ -50,10 +52,10 @@ def process_image_batch(
 
 @torch.no_grad()
 def embed_image_batch(
-    image_batch: t.List[torch.Tensor],
-    *,
-    model: CLIPVisionModelWithProjection,
-    index: pd.Series,
+        image_batch: t.List[torch.Tensor],
+        *,
+        model: CLIPVisionModelWithProjection,
+        index: pd.Series,
 ) -> pd.Series:
     """Embed a batch of images."""
     input_batch = torch.cat(image_batch)
@@ -76,7 +78,6 @@ class EmbedImagesComponent(PandasTransformComponent):
             model_id: id of the model on the Hugging Face hub
             batch_size: batch size to use.
         """
-        torch.cuda.set_device(0)
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         logger.info("device used is %s", self.device)
 
