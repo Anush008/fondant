@@ -254,6 +254,8 @@ class DaskDataWriter(DataIO):
         schema = {field.name: field.type.value for field in subset_spec.fields.values()}
         print("schema")
         print(schema)
+        print("dtype")
+        print(dataframe.dtypes)
         return self._create_write_task(dataframe, location=location, schema=schema)
 
     @staticmethod
