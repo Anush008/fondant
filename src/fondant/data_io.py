@@ -214,6 +214,10 @@ class DaskDataWriter(DataIO):
         print(subset_columns)
         try:
             subset_df = dataframe[subset_columns]
+            print("collls")
+            print(subset_df.columns)
+            print("name")
+            print(subset_name)
             print("subset_df1")
         except KeyError as e:
             msg = (
