@@ -1,3 +1,4 @@
+<a name="top"></a>
 <p align="center">
     <img src="https://raw.githubusercontent.com/ml6team/fondant/main/docs/art/fondant_banner.svg" height="250px"/>
 </p>
@@ -63,7 +64,7 @@ machine learning-based operations. This need not be the case, however, if proces
 components would be reusable and exchangeable and pipelines were easily composable. 
 Realizing this is the main vision behind Fondant.
 
-<p align="right">(<a href="#chocolate_bar-fondant">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 💨 Getting Started
 
