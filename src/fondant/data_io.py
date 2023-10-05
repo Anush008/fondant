@@ -209,9 +209,12 @@ class DaskDataWriter(DataIO):
     ) -> dd.DataFrame:
         """Create subset dataframe to save with the original field name as the column name."""
         # Create a new dataframe with only the columns needed for the output subset
+        print("subset_columns")
         subset_columns = [f"{subset_name}_{field}" for field in subset_spec.fields]
+        print(subset_columns)
         try:
             subset_df = dataframe[subset_columns]
+            print("subset_df1")
         except KeyError as e:
             msg = (
                 f"Field {e.args[0]} defined in output subset {subset_name} "
@@ -220,12 +223,15 @@ class DaskDataWriter(DataIO):
             raise ValueError(
                 msg,
             )
-
+        print(subset_df.columns)
         # Remove the subset prefix from the column names
+
+        print("subset_df2")
         subset_df = subset_df.rename(
             columns={col: col[(len(f"{subset_name}_")) :] for col in subset_columns},
         )
-
+        print("subset_df2")
+        print(subset_df.columns)
         return subset_df
 
     def _write_subset(
@@ -239,9 +245,11 @@ class DaskDataWriter(DataIO):
             location = self.manifest.index.location
         else:
             location = self.manifest.subsets[subset_name].location
-
+        print("subset_write")
+        print(subset_name)
         schema = {field.name: field.type.value for field in subset_spec.fields.values()}
-
+        print("schema")
+        print(schema)
         return self._create_write_task(dataframe, location=location, schema=schema)
 
     @staticmethod
