@@ -13,7 +13,7 @@ RUN python -m spacy download en_core_web_sm
 # Install Fondant
 # This is split from other requirements to leverage caching
 ARG FONDANT_VERSION=main
-RUN pip3 install fondant[aws,azure,gcp]@git+https://github.com/ml6team/fondant@${FONDANT_VERSION}
+RUN pip3 install fondant[aws,azure,gcp]@git+https://github.com/ml6team/fondant@1c770a7ade66abf653dea4ecf129f3d807e5a9b8
 
 # Set the working directory to the component folder
 WORKDIR /component/src

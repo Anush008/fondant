@@ -1,6 +1,6 @@
 name: Cluster embeddings
 description: Component that applies k-means clustering on subsampled image embeddings
-image: ghcr.io/ml6team/cluster_image_embeddings:latest
+image: ghcr.io/ml6team/cluster_image_embeddings:1c770a7ade66abf653dea4ecf129f3d807e5a9b8
 
 consumes:
   image:

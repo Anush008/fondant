@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 pytorch/pytorch:2.0.1-cuda11.7-cudnn8-devel
+FROM --platform=linux/amd64 pytorch/pytorch:2.0.1-cuda11.7-cudnn8-runtime
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -16,7 +16,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 # Install Fondant
 # This is split from other requirements to leverage caching
 ARG FONDANT_VERSION=main
-RUN pip3 install fondant[aws,azure,gcp]@git+https://github.com/ml6team/fondant@${FONDANT_VERSION}
+RUN pip3 install fondant[aws,azure,gcp]@git+https://github.com/ml6team/fondant@1c770a7ade66abf653dea4ecf129f3d807e5a9b8
 
 # Set the working directory to the component folder
 WORKDIR /component/src
