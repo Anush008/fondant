@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 run_id = 1
 # Initialize pipeline and client
 pipeline = Pipeline(
-    pipeline_name=f"datacomp-filtering-pipeline-{run_id}",
+    pipeline_name=f"datacomp-filtering-pipeline-{run_id}-v2",
     pipeline_description="A pipeline for filtering the Datacomp dataset",
     base_path=PipelineConfigs.BASE_PATH,
 )
@@ -43,10 +43,10 @@ load_from_parquet = ComponentOp(
         "dataset_uri": f"gs://soy-audio-379412_datacomp/final_dataset_multiple/{run_id}/",
         "column_name_mapping": load_component_column_mapping,
         "index_column": "uid",
-        "n_rows_to_load": 1000,
+        #  "n_rows_to_load": 1000,
     },
-    # node_pool_label="node_pool",
-    # node_pool_name="n2-standard-64-pool",
+    node_pool_label="node_pool",
+    node_pool_name="n2-standard-64-pool",
 )
 download_images_op = ComponentOp.from_registry(
     name="download_images",
