@@ -1,6 +1,6 @@
 name: Detect text
 description: Component that detects text in images using an mmocr model
-image: ghcr.io/ml6team/detect_text:cce907d6b55edbaec208ce7b69a7e036c5e59139
+image: ghcr.io/ml6team/detect_text:13f2009111edc03b2bde7061fc52a89fd73c0472
 
 consumes:
   images:
