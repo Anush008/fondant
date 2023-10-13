@@ -78,7 +78,7 @@ mask_images_op = ComponentOp(
 embed_images_op = ComponentOp.from_registry(
     name="embed_images",
     arguments={
-        "batch_size": 16,
+        "batch_size": 8,
     },
     node_pool_label="node_pool",
     node_pool_name="model-inference-pool",
