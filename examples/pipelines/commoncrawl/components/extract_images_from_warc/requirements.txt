@@ -1,6 +1,7 @@
 trafilatura==1.6.1
 beautifulsoup4==4.12.2
 fastwarc==0.14.5
+boto3==1.28.61
 
 aiobotocore==2.4.2
 aiohttp==3.8.6
