@@ -101,6 +101,7 @@ class DaskDataLoader(DataIO):
             remote_path,
             columns=fields,
             calculate_divisions=True,
+            use_listings_cache=False,
         )
 
         # add subset prefix to columns
@@ -123,7 +124,11 @@ class DaskDataLoader(DataIO):
         remote_path = index.location
 
         # load index from parquet, expecting id and source columns
-        return dd.read_parquet(remote_path, calculate_divisions=True)
+        return dd.read_parquet(
+            remote_path,
+            calculate_divisions=True,
+            use_listings_cache=False,
+        )
 
     def load_dataframe(self) -> dd.DataFrame:
         """
