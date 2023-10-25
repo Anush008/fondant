@@ -27,9 +27,12 @@ class SubsetFieldMapper:
          fields of source dataset subsets and their target component subsets.
     """
 
-    def __init__(self):
+    def __init__(self, subset_field_mappings=None):
         """Initialize the SubsetFieldMapper."""
-        self.subset_field_mappings: t.Dict[str, t.Dict[str, t.Any]] = {}
+        if subset_field_mappings is None:
+            self.subset_field_mappings = {}
+        else:
+            self.subset_field_mappings = subset_field_mappings
 
     def add_mapping(
         self,
@@ -132,9 +135,7 @@ class SubsetFieldMapper:
             SubsetFieldMapper: The SubsetFieldMapper object created from the JSON string.
         """
         data = json.loads(json_string)
-        obj = cls()
-        obj.subset_field_mappings = data["subset_field_mappings"]
-        return obj
+        return cls(data["subset_field_mappings"])
 
     @property
     def subset_mapping(self):
@@ -144,6 +145,23 @@ class SubsetFieldMapper:
             for dataset_subset, component_subset in self.subset_field_mappings.items():
                 subset_mapping[dataset_subset] = list(component_subset.keys())[0]
         return subset_mapping
+
+    @classmethod
+    def get_inverse_mapping(
+        cls,
+        subset_field_mappings: t.Dict[str, t.Dict[str, t.Any]],
+    ) -> "SubsetFieldMapper":
+        """Retrieve the inverse mapping of the provided subset_field_mappings dictionary."""
+        inverse_mapping: t.Dict[str, t.Dict[str, t.Any]] = {}
+        for dataset_subset, component_subset in subset_field_mappings.items():
+            for comp_subset, field_mapping in component_subset.items():
+                if comp_subset not in inverse_mapping:
+                    inverse_mapping[comp_subset] = {}
+                inverted_field_mapping = {
+                    target: source for source, target in field_mapping.items()
+                }
+                inverse_mapping[comp_subset][dataset_subset] = inverted_field_mapping
+        return cls(inverse_mapping)
 
 
 @dataclass

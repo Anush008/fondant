@@ -67,6 +67,21 @@ def test_mapping_from_json(initialized_mapper):
     assert new_mapper.subset_mapping == initialized_mapper.subset_mapping
 
 
+def test_get_inverse_mapping():
+    original_mappings = {
+        "images": {"pictures": {"data": "array", "width": "length"}},
+    }
+
+    subset_mapper = SubsetFieldMapper(original_mappings)
+    inverse_mapper = SubsetFieldMapper.get_inverse_mapping(
+        subset_mapper.subset_field_mappings,
+    )
+
+    assert inverse_mapper.subset_field_mappings == {
+        "pictures": {"images": {"array": "data", "length": "width"}},
+    }
+
+
 @pytest.fixture()
 def valid_fondant_schema() -> dict:
     with open(component_specs_path / "valid_component.yaml") as f:
