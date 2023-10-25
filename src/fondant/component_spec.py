@@ -14,8 +14,136 @@ from jsonschema import Draft4Validator
 from referencing import Registry, Resource
 from referencing.jsonschema import DRAFT4
 
-from fondant.exceptions import InvalidComponentSpec
+from fondant.exceptions import InvalidComponentSpec, InvalidSubsetMapping
 from fondant.schema import Field, Type
+
+
+class SubsetFieldMapper:
+    """
+    A class for managing subset field mappings between a dataset and component.
+
+    Attributes:
+        subset_field_mappings (Dict[str, Dict[str, Any]]): A dictionary storing mappings between
+         fields of source dataset subsets and their target component subsets.
+    """
+
+    def __init__(self):
+        """Initialize the SubsetFieldMapper."""
+        self.subset_field_mappings: t.Dict[str, t.Dict[str, t.Any]] = {}
+
+    def add_mapping(
+        self,
+        dataset_subset: str,
+        component_subset: str,
+        field_mapping: t.Dict[str, t.Any],
+    ) -> None:
+        """
+        Add a new mapping between source and target subsets.
+
+        Args:
+            dataset_subset: The source dataset subset.
+            component_subset: The component target subset.
+            field_mapping: The field mapping.
+        """
+        if dataset_subset in list(self.subset_mapping.keys()):
+            msg = (
+                f"Attempting to map dataset subset {dataset_subset} to component subset"
+                f" {component_subset}."
+                f" Mapping already exists for the dataset subset:  {self.to_json()}."
+                f" \n One-to-one mapping violated."
+            )
+            raise InvalidSubsetMapping(msg)
+
+        if component_subset in list(self.subset_mapping.values()):
+            msg = (
+                f"Attempting to map dataset subset {dataset_subset} to component subset"
+                f" {component_subset}."
+                f" Mapping already exists for the component subset:  {self.to_json()}."
+                f"\n One-to-one mapping violated."
+            )
+            raise InvalidSubsetMapping(msg)
+
+        if dataset_subset not in self.subset_field_mappings:
+            self.subset_field_mappings[dataset_subset] = {}
+
+        self.subset_field_mappings[dataset_subset][component_subset] = field_mapping
+        self.subset_mapping[dataset_subset] = component_subset
+
+    def remove_mapping(self, dataset_subset: str, component_subset: str) -> None:
+        """
+        Remove the mapping between the specified source and target subsets.
+
+        Args:
+            dataset_subset (str): The source subset.
+            component_subset (str): The target subset.
+
+        """
+        if (
+            dataset_subset not in self.subset_field_mappings
+            or component_subset not in self.subset_field_mappings[dataset_subset]
+        ):
+            msg = f"Mapping between '{dataset_subset}' and '{component_subset}' does not exist."
+            raise InvalidSubsetMapping(msg)
+
+        del self.subset_field_mappings[dataset_subset]
+
+    def get_mapping(self, dataset_subset: str, component_subset: str) -> t.Any:
+        """
+        Retrieve the mapping between the specified source and target subsets.
+
+        Args:
+            dataset_subset (str): The source subset.
+            component_subset (str): The target subset.
+
+        Returns:
+            Any: The corresponding field mapping if it exists, else None.
+        """
+        if (
+            dataset_subset in self.subset_field_mappings
+            and component_subset in self.subset_field_mappings[dataset_subset]
+        ):
+            return self.subset_field_mappings[dataset_subset][component_subset]
+
+        return None
+
+    def to_json(self) -> str:
+        """
+        Convert the current state of the SubsetFieldMapper to a JSON string.
+
+        Returns:
+            str: A JSON string representing the current state of the object.
+        """
+        return json.dumps(
+            {
+                "subset_field_mappings": self.subset_field_mappings,
+                "subset_mapping": self.subset_mapping,
+            },
+        )
+
+    @classmethod
+    def from_json(cls, json_string: str) -> "SubsetFieldMapper":
+        """
+        Create a SubsetFieldMapper object from a JSON string.
+
+        Args:
+            json_string (str): The JSON string representing the object.
+
+        Returns:
+            SubsetFieldMapper: The SubsetFieldMapper object created from the JSON string.
+        """
+        data = json.loads(json_string)
+        obj = cls()
+        obj.subset_field_mappings = data["subset_field_mappings"]
+        return obj
+
+    @property
+    def subset_mapping(self):
+        """Subset mapping between the dataset and component."""
+        subset_mapping = {}
+        if self.subset_field_mappings:
+            for dataset_subset, component_subset in self.subset_field_mappings.items():
+                subset_mapping[dataset_subset] = list(component_subset.keys())[0]
+        return subset_mapping
 
 
 @dataclass

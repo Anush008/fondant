@@ -6,11 +6,65 @@ from unittest.mock import patch
 
 import pytest
 import yaml
-from fondant.component_spec import ComponentSpec, ComponentSubset, KubeflowComponentSpec
-from fondant.exceptions import InvalidComponentSpec
+from fondant.component_spec import (
+    ComponentSpec,
+    ComponentSubset,
+    KubeflowComponentSpec,
+    SubsetFieldMapper,
+)
+from fondant.exceptions import InvalidComponentSpec, InvalidSubsetMapping
 from fondant.schema import Type
 
 component_specs_path = Path(__file__).parent / "example_specs/component_specs"
+
+
+@pytest.fixture()
+def initialized_mapper():
+    return SubsetFieldMapper()
+
+
+def test_add_mapping(initialized_mapper):
+    initialized_mapper.add_mapping("images", "pictures", {"data": "array"})
+    assert initialized_mapper.subset_mapping == {"images": "pictures"}
+
+
+def test_invalid_subset_mapping(initialized_mapper):
+    initialized_mapper.add_mapping("images", "pictures", {"data": "array"})
+    # dataset subset already mapped to another dataframe subset
+    with pytest.raises(InvalidSubsetMapping):
+        initialized_mapper.add_mapping("images", "frame", {"data": "array"})
+    # dataframe subset already mapped to another dataset subset
+    with pytest.raises(InvalidSubsetMapping):
+        initialized_mapper.add_mapping("frame", "pictures", {"data": "array"})
+
+
+def test_remove_mapping(initialized_mapper):
+    initialized_mapper.add_mapping("images", "pictures", {"data": "array"})
+    initialized_mapper.remove_mapping("images", "pictures")
+    assert initialized_mapper.subset_mapping == {}
+
+
+def test_get_mapping(initialized_mapper):
+    initialized_mapper.add_mapping("images", "pictures", {"data": "array"})
+    mapping = initialized_mapper.get_mapping("images", "pictures")
+    assert mapping == {"data": "array"}
+
+
+def test_mapping_to_json(initialized_mapper):
+    initialized_mapper.add_mapping("images", "pictures", {"data": "array"})
+    json_string = initialized_mapper.to_json()
+    assert (
+        json_string
+        == '{"subset_field_mappings": {"images": {"pictures": {"data": "array"}}},'
+        ' "subset_mapping": {"images": "pictures"}}'
+    )
+
+
+def test_mapping_from_json(initialized_mapper):
+    initialized_mapper.add_mapping("dataset1", "component1", {"field1": 1})
+    json_string = initialized_mapper.to_json()
+    new_mapper = SubsetFieldMapper.from_json(json_string)
+    assert new_mapper.subset_mapping == initialized_mapper.subset_mapping
 
 
 @pytest.fixture()

@@ -21,3 +21,7 @@ class InvalidPipelineDefinition(ValidationError, FondantException):
 
 class InvalidTypeSchema(ValidationError, FondantException):
     """Thrown when a Type schema definition is invalid."""
+
+
+class InvalidSubsetMapping(ValidationError, FondantException):
+    """Thrown when an invalid subset mapping is set."""
