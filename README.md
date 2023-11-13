@@ -223,7 +223,7 @@ margin-right: auto;
 
 
 
-
+<div align="center">Some test</div>
 <table>
 <thead>
 <tr>
