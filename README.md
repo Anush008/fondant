@@ -224,31 +224,68 @@ margin-right: auto;
 
 
 <div align="center">Some test</div>
-<table>
-<thead>
-<tr>
-  <th style="text-align:center"><strong>Docker Compose</strong></th>
-  <th style="text-align:center"><strong>Vertex AI</strong></th>
-  <th style="text-align:center"><strong>Kubeflow Pipelines</strong></th>
-  <th style="text-align:center"><strong>🚧SageMakerRunner🚧</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td style="text-align:center">Runs locally using Docker Compose.</td>
-  <td style="text-align:center">Runs on Vertex AI pipelines</td>
-  <td style="text-align:center">Runs on Kubeflow Pipelines.</td>
-  <td style="text-align:center">Runs on Sagemaker Pipelines.</td>
-</tr>
-<tr>
-  <td style="text-align:center">Runs locally using Docker Compose.</td>
-  <td style="text-align:center">Runs on Vertex AI pipelines</td>
-  <td style="text-align:center">Runs on Kubeflow Pipelines.</td>
-  <td style="text-align:center">Runs on Sagemaker Pipelines.</td>
-
-</tr>
-</tbody>
+<table><table style="width: 100%;">
+  <thead>
+    <tr>
+      <th style="text-align:center; width: 25%;"><strong>Docker Compose</strong></th>
+      <th style="text-align:center; width: 25%;"><strong>Vertex AI</strong></th>
+      <th style="text-align:center; width: 25%;"><strong>Kubeflow Pipelines</strong></th>
+      <th style="text-align:center; width: 25%;"><strong>🚧SageMakerRunner🚧</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:center; width: 25%"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/docker_compose.png?raw=true" alt="DockerCompose" height="200" width="auto"></td>
+      <td style="text-align:center; width: 25%"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/vertex_ai.png?raw=true" alt="vertex_ai" height="200" width="auto"></td>
+      <td style="text-align:center; width: 25%"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/kubeflow_pipelines.png?raw=true" alt="DockerCompose" height="200" width="auto"></td>
+      <td style="text-align:center; width: 25%"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/sagemaker.png?raw=true" alt="vertex_ai" height="200" width="auto"></td>
+    </tr>
+    <tr>
+      <td style="text-align:center; width: 25%">Runs locally using Docker Compose.</td>
+      <td style="text-align:center; width: 25%">Runs on Vertex AI pipelines</td>
+      <td style="text-align:center; width: 25%">Runs on Kubeflow Pipelines.</td>
+      <td style="text-align:center; width: 25%">Runs on Sagemaker Pipelines.</td>
+    </tr>
+  </tbody>
 </table>
+
+
+<table>
+  <tr>
+    <th>Docker Compose</th>
+    <th>Vertex AI</th>
+    <th>Kubeflow Pipelines</th>
+    <th>🚧SageMakerRunner🚧</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/docker_compose.png?raw=true" alt="DockerCompose" height="200" width="auto">
+      <p>Runs locally using Docker Compose.</p>
+    </td>
+    <td align="center">
+      <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/vertex_ai.png?raw=true" alt="vertex_ai" height="200" width="auto">
+      <p>Runs on Vertex AI pipelines</p>
+    </td>
+    <td align="center">
+      <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/kubeflow_pipelines.png?raw=true" alt="DockerCompose" height="200" width="auto">
+      <p>Runs on Kubeflow Pipelines.</p>
+    </td>
+    <td align="center">
+      <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/sagemaker.png?raw=true" alt="vertex_ai" height="200" width="auto">
+      <p>Runs on Sagemaker Pipelines.</p>
+    </td>
+  </tr>
+</table>
+In this example, I've removed some of the styling attributes and used the align attribute for centering. The content is placed within a centered cell with an image and a paragraph below it. GitHub's rendering might handle this structure more consistently.
+
+If the issue persists, it's important to note that GitHub's rendering of HTML and CSS is limited, and achieving precise layout and styling might not always be possible within GitHub's constraints.
+
+
+
+
+
+
+
 ## 👨‍💻 Usage
 
 
