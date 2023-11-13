@@ -235,10 +235,10 @@ margin-right: auto;
 </thead>
 <tbody>
 <tr>
-  <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/docker_compose.png?raw=true" alt="DockerCompose" height="200"></td>
-  <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/vertex_ai.png?raw=true" alt="vertex_ai" height="200"></td>
-  <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/kubeflow_pipelines.png?raw=true" alt="DockerCompose" height="200"></td>
-  <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/sagemaker.png?raw=true" alt="vertex_ai" height="200"></td>
+  <td style="text-align:center">Runs locally using Docker Compose.</td>
+  <td style="text-align:center">Runs on Vertex AI pipelines</td>
+  <td style="text-align:center">Runs on Kubeflow Pipelines.</td>
+  <td style="text-align:center">Runs on Sagemaker Pipelines.</td>
 </tr>
 <tr>
   <td style="text-align:center">Runs locally using Docker Compose.</td>
