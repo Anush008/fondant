@@ -241,15 +241,48 @@ margin-right: auto;
   <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/sagemaker.png?raw=true" alt="vertex_ai" height="200"></td>
 </tr>
 <tr>
-<td style="text-align:center">Runs locally using Docker Compose.</td>
-<td style="text-align:center">Runs on Vertex AI pipelines</td>
-<td style="text-align:center">Runs on Kubeflow Pipelines.</td>
-<td style="text-align:center">Runs on Sagemaker Pipelines.</td>
+  <td style="text-align:center">Runs locally using Docker Compose.</td>
+  <td style="text-align:center">Runs on Vertex AI pipelines</td>
+  <td style="text-align:center">Runs on Kubeflow Pipelines.</td>
+  <td style="text-align:center">Runs on Sagemaker Pipelines.</td>
 
 </tr>
 </tbody>
 </table>
 ## 👨‍💻 Usage
+
+
+<div align="center">Some test</div>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
+<th style="text-align:right">Cool</th>
+
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td style="text-align:left">col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td style="text-align:left">zebrdwadwa wa aw da stripes</td>
+<td style="text-align:center">arw dawdwadawdae neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
 
 #### Pipeline
 
