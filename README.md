@@ -147,31 +147,53 @@ Fondant pipelines can be run on different platforms.
     <tr style="border: 0px;">
         <td width="25%" style="border: 0px; width: 25.00%">
             <figure>
-                <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/docker_compose.png?raw=true" width="200" height="200" style="height: 150px; margin-left: auto; margin-right: auto;" />
+                <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/docker_compose.png?raw=true"  style="height: 150px; margin-left: auto; margin-right: auto;" />
                 <figcaption class="caption"><strong>LocalRunner</strong><br> Runs locally using Docker Compose.</figcaption>
             </figure>
         </td>
         <td width="25%" style="border: 0px; width: 25.00%">
             <figure>
-                <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/vertex_ai.png?raw=true" width="200" height="200" style="height: 150px; margin-left: auto; margin-right: auto;" />
+                <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/vertex_ai.png?raw=true"  style="height: 150px; margin-left: auto; margin-right: auto;" />
                 <figcaption class="caption"><strong>VertexRunner</strong><br> Runs on VertexAI Pipelines.</figcaption>
             </figure>
         </td>
         <td width="25%" style="border: 0px; width: 25.00%">
             <figure>
-                <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/kubeflow_pipelines.png?raw=true" width="200" height="200" style="height: 150px; margin-left: auto; margin-right: auto;" />
+                <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/kubeflow_pipelines.png?raw=true"  style="height: 150px; margin-left: auto; margin-right: auto;" />
                 <figcaption class="caption"><strong>KubeflowRunner</strong><br> Runs on Kubeflow Pipelines.</figcaption>
             </figure>
         </td>
         <td width="25%" style="border: 0px; width: 25.00%">
             <figure>
-                <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/sagemaker.png?raw=true" width="200" height="200" style="height: 150px; margin-left: auto; margin-right: auto;" />
+                <img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/sagemaker.png?raw=true"  style="height: 150px; margin-left: auto; margin-right: auto;" />
                 <figcaption class="caption"><strong>🚧SageMakerRunner🚧 </strong><br> Runs on Sagemaker Pipelines.</figcaption>
             </figure>
         </td>
     </tr>
-</table>
+</table> 
 
+
+
+<table style="width: 100%; border-collapse: collapse; border: none;">
+  <tr>
+    <td style="width: 25%; text-align: center;"><strong>Docker Compose</strong></td>
+    <td style="width: 25%; text-align: center;"><strong>Vertex AI</strong></td>
+    <td style="width: 25%; text-align: center;"><strong>Kubeflow Pipelines</strong></td>
+    <td style="width: 25%; text-align: center;"><strong>🚧SageMakerRunner🚧 </strong></td>
+  </tr>
+  <tr>
+    <td style="width: 25%; text-align: center;"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/docker_compose.png?raw=true" alt="Sagemaker" height="200"></td>
+    <td style="width: 25%; text-align: center;"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/vertex_ai.png?raw=true" alt="Kubeflow Pipelines" height="200"></td>
+    <td style="width: 25%; text-align: center;"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/kubeflow_pipelines.png?raw=true" alt="Kubeflow Ppelines" height="200"></td>
+    <td style="width: 25%; text-align: center;"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/sagemaker.png?raw=true" alt="Kubeflow Pipenes" height="200"></td>
+  </tr>
+  <tr>
+    <td style="width: 25%; text-align: center;">Runs locally using Docker Compose.</td>
+    <td style="width: 25%; text-align: center;">Runs on Vertex AI pipelines</td>
+    <td style="width: 25%; text-align: center;">Runs on Kubeflow Pipelines.</td>
+    <td style="width: 25%; text-align: center;">Runs on Sagemaker Pipelines.</td>
+  </tr>
+</table>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
