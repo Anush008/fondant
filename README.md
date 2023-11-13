@@ -172,9 +172,12 @@ Fondant pipelines can be run on different platforms.
     </tr>
 </table> 
 
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
 
-
-<table style="width: 80%; border-collapse: collapse; border: none;">
+<table class="center">
   <tr>
     <td style="width: 20%; text-align: center; vertical-align: middle;"><strong>Docker Compose</strong></td>
     <td style="width: 20%; text-align: center; vertical-align: middle;"><strong>Vertex AI</strong></td>
