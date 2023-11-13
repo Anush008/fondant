@@ -177,13 +177,13 @@ Fondant pipelines can be run on different platforms.
   margin-right: auto;
 }
 
-<table class="center">
-  <tr>
-    <td style="width: 20%; text-align: center; vertical-align: middle;"><strong>Docker Compose</strong></td>
-    <td style="width: 20%; text-align: center; vertical-align: middle;"><strong>Vertex AI</strong></td>
-    <td style="width: 20%; text-align: center; vertical-align: middle;"><strong>Kubeflow Pipelines</strong></td>
-    <td style="width: 20%; text-align: center; vertical-align: middle;"><strong>🚧SageMakerRunner🚧 </strong></td>
-  </tr>
+<table class="center" style="margin: auto;">
+<tr>
+  <td style="text-align: center; vertical-align: middle;"><strong>Docker Compose</strong></td>
+  <td style="text-align: center; vertical-align: middle;"><strong>Vertex AI</strong></td>
+  <td style="text-align: center; vertical-align: middle;"><strong>Kubeflow Pipelines</strong></td>
+  <td style="text-align: center; vertical-align: middle;"><strong>🚧SageMakerRunner🚧 </strong></td>
+</tr>
   <tr>
     <td style="width: 20%; text-align: center; vertical-align: middle;"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/docker_compose.png?raw=true" alt="Sagemaker" height="200"></td>
     <td style="width: 20%; text-align: center; vertical-align: middle;"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/vertex_ai.png?raw=true" alt="Kubeflow Pipelines" height="200"></td>
