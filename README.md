@@ -72,29 +72,39 @@ It offers:
 
 ## 🪤 Why Fondant?
 
-In the age of Foundation Models, control over your data is key and building pipelines for 
-large-scale data processing is costly, especially when they require advanced machine learning-based operations.
-This need not be the case, however, if processing components would be reusable and exchangeable and pipelines were 
+In the age of Foundation Models, control over your data is key and building pipelines for
+large-scale data processing is costly, especially when they require advanced machine learning-based
+operations.
+This need not be the case, however, if processing components would be reusable and exchangeable and
+pipelines were
 easily composable. Realizing this is the main vision behind Fondant.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## 💨 Getting Started
 
-Eager to get started? Here is a [step by step guide](https://fondant.readthedocs.io/en/latest/getting_started) to get your first pipeline up and running.
+Eager to get started? Here is
+a [step by step guide](https://fondant.readthedocs.io/en/latest/getting_started) to get your first
+pipeline up and running.
 
 ## 🪄 Example pipelines
 
-We have created several ready-made example pipelines for you to use as a starting point for exploring Fondant.
+We have created several ready-made example pipelines for you to use as a starting point for
+exploring Fondant.
 
-- [ControlNet Interior Design Pipeline](https://github.com/ml6team/fondant-usecase-controlnet): pipeline for data collection and processing for ControlNet model fine-tuning
-- [RAG ingestion pipeline](https://github.com/ml6team/fondant-usecase-RAG): pipeline that embeds and ingests text data into a vector database
-- [Datacomp](https://github.com/ml6team/fondant-usecase-datacomp): pipeline to create an image-text dataset for CLIP model training
-- [Filter creative common license images](https://github.com/ml6team/fondant-usecase-filter-creative-commons): pipeline to filter and download creative common license images
+- [ControlNet Interior Design Pipeline](https://github.com/ml6team/fondant-usecase-controlnet):
+  pipeline for data collection and processing for ControlNet model fine-tuning
+- [RAG ingestion pipeline](https://github.com/ml6team/fondant-usecase-RAG): pipeline that embeds and
+  ingests text data into a vector database
+- [Datacomp](https://github.com/ml6team/fondant-usecase-datacomp): pipeline to create an image-text
+  dataset for CLIP model training
+- [Filter creative common license images](https://github.com/ml6team/fondant-usecase-filter-creative-commons):
+  pipeline to filter and download creative common license images
 
 ## 🧩 Reusable components
 
-Fondant comes with a library of reusable components, which can jumpstart your pipeline, here are a selected few:
+Fondant comes with a library of reusable components, which can jumpstart your pipeline, here are a
+selected few:
 
 | COMPONENT                                                                                                                  | DESCRIPTION                                                                 |
 |----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -121,10 +131,11 @@ Fondant comes with a library of reusable components, which can jumpstart your pi
 | [normalize_text](https://github.com/ml6team/fondant/tree/main/components/normalize_text)                                   | Implements several normalization techniques to clean and preprocess textual |
 | [filter_text_length](https://github.com/ml6team/fondant/tree/main/components/filter_text_length)                           | Filters text based on character length                                      |
 
-
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-Check out the [components](https://github.com/ml6team/fondant/tree/main/components) section for a full list of available components.
+Check out the [components](https://github.com/ml6team/fondant/tree/main/components) section for a
+full list of available components.
+
 ## ⚒️ Installation
 
 Fondant can be installed using pip:
@@ -173,8 +184,8 @@ Fondant pipelines can be run on different platforms.
 </table> 
 
 .center {
-  margin-left: auto;
-  margin-right: auto;
+margin-left: auto;
+margin-right: auto;
 }
 
 <style>
@@ -189,7 +200,7 @@ Fondant pipelines can be run on different platforms.
 
 <table class="center" style="margin: auto;">
 <tr>
-  <td class="center-cell"><strong>Docker Compose</strong></td>
+  <td style="text-align:center"><strong>Docker Compose</strong></td>
   <td class="center-cell"><strong>Vertex AI</strong></td>
   <td class="center-cell"><strong>Kubeflow Pipelines</strong></td>
   <td class="center-cell"><strong>🚧SageMakerRunner🚧</strong></td>
@@ -216,26 +227,25 @@ Fondant pipelines can be run on different platforms.
 <table>
 <thead>
 <tr>
-<th style="text-align:center">Tables</th>
-<th style="text-align:center">Are</th>
-<th style="text-align:center">Cool</th>
+  <th style="text-align:center"><strong>Docker Compose</strong></th>
+  <th style="text-align:center"><strong>Vertex AI</strong></th>
+  <th style="text-align:center"><strong>Kubeflow Pipelines</strong></th>
+  <th style="text-align:center"><strong>🚧SageMakerRunner🚧</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">col 3 is</td>
-<td style="text-align:center">right-aligned</td>
-<td style="text-align:right">$1600</td>
+  <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/docker_compose.png?raw=true" alt="DockerCompose" height="200"></td>
+  <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/vertex_ai.png?raw=true" alt="vertex_ai" height="200"></td>
+  <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/kubeflow_pipelines.png?raw=true" alt="DockerCompose" height="200"></td>
+  <td style="text-align:center"><img src="https://github.com/ml6team/fondant/blob/main/docs/art/runners/sagemaker.png?raw=true" alt="vertex_ai" height="200"></td>
 </tr>
 <tr>
-<td style="text-align:left">col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td style="text-align:left">zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:right">$1</td>
+<td style="text-align:center">Runs locally using Docker Compose.</td>
+<td style="text-align:center">Runs on Vertex AI pipelines</td>
+<td style="text-align:center">Runs on Kubeflow Pipelines.</td>
+<td style="text-align:center">Runs on Sagemaker Pipelines.</td>
+
 </tr>
 </tbody>
 </table>
@@ -248,9 +258,9 @@ components. The following pipeline for instance uses the reusable `load_from_hf_
 to load a dataset from the Hugging Face Hub and process it using a custom component:
 
 **_pipeline.py_**
+
 ```python
 from fondant.pipeline import ComponentOp, Pipeline
-
 
 pipeline = Pipeline(pipeline_name="example pipeline", base_path="fs://bucket")
 
@@ -384,7 +394,8 @@ We welcome [contributions of different kinds](https://fondant.readthedocs.io/en/
 
 ### Environment setup
 
-We use [poetry](https://python-poetry.org/docs/) and [pre-commit](https://pre-commit.com/) to enable a smooth developer flow. Run the following commands to
+We use [poetry](https://python-poetry.org/docs/) and [pre-commit](https://pre-commit.com/) to enable
+a smooth developer flow. Run the following commands to
 set up your development environment:
 
 ```commandline
