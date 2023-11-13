@@ -1,0 +1,26 @@
+name: Google docs reader
+description: Load data from google docs
+image: hakimovich99/data_loader:latest
+
+produces:
+  text:
+    fields:
+      chunk_id:
+        type: string
+      doc_id:
+        type: string
+      data:
+        type: string
+      hash:
+        type: string
+
+args:
+  folder_url:
+    description: list containing urls strings of the folders from which documents must be loaded
+    type: list
+  docs_url:
+    description: list containing urls strings of the documents that must be loaded
+    type: list
+  is_folder:
+    description: specifies if the documents will be loaded from a list of folders url or docs url
+    type: bool

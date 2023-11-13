@@ -1,0 +1,25 @@
+name: Index to weaviate
+description: Component that adds nodes to a Weaviate vectorDB
+image: hakimovich99/write_to_vector_db:latest
+
+consumes:
+  text:
+    fields:
+      data:
+        type: string
+      source:
+        type: string
+      embeddings:
+        type: array
+        items:
+          type: float32
+args:
+  wcs_username:
+    description: username of cloud cluster account
+    type: str
+  wcs_password:
+    description: password of cloud cluster account
+    type: str
+  wcs_url:
+    description: url of cloud cluster account
+    type: str

@@ -1,0 +1,29 @@
+#metadata: to be matched w/ docker image
+name: Create nodes embeddings
+description: Component that creates words embeddings
+image: hakimovich99/get_embeddings:latest
+
+consumes:
+  text:
+    fields:
+      data:
+        type: string
+      source:
+        type: string
+
+produces:
+  text:
+    fields:
+      data:
+        type: string
+      source:
+        type: string
+      embeddings:
+        type: array
+        items:
+          type: float32
+
+args:
+  hf_embed_model:
+    description: name of the chosen embedding model
+    type: str

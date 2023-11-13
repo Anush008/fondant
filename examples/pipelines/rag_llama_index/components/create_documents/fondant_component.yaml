@@ -1,0 +1,22 @@
+#metadata: to be matched w/ docker image
+name: create_documents
+description: Create and store LlamaIndex Documents
+image: hakimovich99/create_documents:dev
+
+consumes:
+  text:
+    fields:
+      data:
+        type: string
+      source:
+        type: string
+
+produces:
+  text:
+    fields:
+      data:
+        type: string
+      source:
+        type: string
+      documents:
+        type: string
